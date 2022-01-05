@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserForm } from './components/UserForm';
+import { FormState } from './components/FormState';
 
 const App = () => {
   return (
     <div className="App">
-      <UserForm />
+      <FormState />
     </div>
   );
 }

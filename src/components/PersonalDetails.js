@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import Dialog from '@material-ui/core/Dialog';
+import { ButtonGroup } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import { Card} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { CardActions, CardContent } from '@material-ui/core';
 
-export class FormPersonalDetails extends Component {
+export class PersonalDetails extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -19,13 +22,20 @@ export class FormPersonalDetails extends Component {
   render() {
     const { values, handleChange } = this.props;
     return (
-      <MuiThemeProvider>
+    
         <>
-          <Dialog
-            open
-            fullWidth
-            maxWidth='sm'
+        <div style={{marginTop:'10%', marginLeft:'40%'}}>
+        
+        <Box sx={{ width: '42%' }} >
+          <Card variant="outlined" style={{backgroundColor:'peachpuff'}}>
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
           >
+          <CardContent>
+          <Grid item>
             <AppBar title="Enter Personal Details" />
             <TextField
               placeholder="Enter Your Occupation"
@@ -33,7 +43,6 @@ export class FormPersonalDetails extends Component {
               onChange={handleChange('occupation')}
               defaultValue={values.occupation}
               margin="normal"
-              fullWidth
             />
             <br />
             <TextField
@@ -42,7 +51,7 @@ export class FormPersonalDetails extends Component {
               onChange={handleChange('city')}
               defaultValue={values.city}
               margin="normal"
-              fullWidth
+
             />
             <br />
             <TextField
@@ -51,10 +60,15 @@ export class FormPersonalDetails extends Component {
               onChange={handleChange('bio')}
               defaultValue={values.bio}
               margin="normal"
-              fullWidth
+
             />
             <br />
-
+            
+            </Grid>
+            </CardContent>
+          <CardActions>
+          <Grid item>
+          <ButtonGroup variant="contained">
             <Button
               color="secondary"
               variant="contained"
@@ -62,15 +76,20 @@ export class FormPersonalDetails extends Component {
             >Back</Button>
 
             <Button
-              color="primary"
+              color="secondary"
               variant="contained"
               onClick={this.continue}
             >Continue</Button>
-          </Dialog>
+            </ButtonGroup>
+          </Grid>
+          </CardActions>
+          </Grid>
+          </Card>
+          </Box>
+          </div>
         </>
-      </MuiThemeProvider>
-    );
+        );
   }
 }
 
-export default FormPersonalDetails;
+        export default PersonalDetails;

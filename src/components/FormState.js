@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import FormUserDetails from './FormUserDetails';
-import FormPersonalDetails from './FormPersonalDetails';
-import Confirm from './Confirm';
-import Success from './Success';
+import UserDetails from './UserDetails';
+import PersonalDetails from './PersonalDetails';
+import ConfirmPage from './ConfirmPage';
+import SuccessPage from './SuccessPage';
 
-export class UserForm extends Component {
+export class FormState extends Component {
   state = {
     step: 1,
     firstName: '',
@@ -44,7 +44,7 @@ export class UserForm extends Component {
     switch (step) {
       case 1:
         return (
-          <FormUserDetails
+          <UserDetails
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
@@ -52,7 +52,7 @@ export class UserForm extends Component {
         );
       case 2:
         return (
-          <FormPersonalDetails
+          <PersonalDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
@@ -61,18 +61,18 @@ export class UserForm extends Component {
         );
       case 3:
         return (
-          <Confirm
+          <ConfirmPage
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             values={values}
           />
         );
       case 4:
-        return <Success />;
+        return <SuccessPage />;
       default:
         (console.log('This is a multi-step form built with React.'))
     }
   }
 }
 
-export default UserForm;
+export default FormState;
